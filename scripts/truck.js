@@ -8,19 +8,19 @@
         this.db = db;
     }
 
-    Truck.prototype.createOrder = function(order) {
+    Truck.prototype.createOrder = function (order) {
         console.log('Adding order for ' + order.emailAddress);
         this.db.add(order.emailAddress, order);
     }
-    
-    Truck.prototype.deliverOrder = function(custId) {
+
+    Truck.prototype.deliverOrder = function (custId) {
         console.log('Delivering order for ' + custId);
         this.db.remove(custId);
     }
 
     Truck.prototype.printOrders = function () {
         var customerIdArray = Object.keys(this.db.getAll());
-        
+
         console.log('Truck #' + this.truckId + ' has pending orders:');
         customerIdArray.forEach(function (id) {
             console.log(this.db.get(id));
